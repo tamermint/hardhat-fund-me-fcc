@@ -11,14 +11,16 @@ require("hardhat-deploy")
  * @type import('hardhat/config').HardhatUserConfig
  */
 
-const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
+const COINMARKETCAP_API_KEY =
+    process.env.COINMARKETCAP_API_KEY || "2a2bced9-fe22-40c7-8d51-3d8df28fef13"
 const SEPOLIA_RPC_URL =
     process.env.SEPOLIA_RPC_URL ||
-    "https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY"
+    "https://eth-sepolia.g.alchemy.com/v2/bKBDD7WLPKM4bWKh52RJoH8AHWwW-7SR"
 const PRIVATE_KEY =
     process.env.PRIVATE_KEY ||
-    "0x11ee3108a03081fe260ecdc106554d09d9d1209bcafd46942b10e02943effc4a"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+    "0x2b9811f3b4072df7bd75f068778cad0f5d6b82c6f22adadf42de762360591617"
+const ETHERSCAN_API_KEY =
+    process.env.ETHERSCAN_API_KEY || "2KCHPQPJJJSKTQ281UI17F9Z8QIZ7ZDEZU"
 
 module.exports = {
     defaultNetwork: "hardhat",
@@ -49,11 +51,11 @@ module.exports = {
         // customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable
     },
     gasReporter: {
-        enabled: true,
+        enabled: false,
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
-        // coinmarketcap: COINMARKETCAP_API_KEY,
+        coinmarketcap: COINMARKETCAP_API_KEY,
     },
     namedAccounts: {
         deployer: {
