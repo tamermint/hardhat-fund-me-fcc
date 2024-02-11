@@ -18,12 +18,12 @@ contract FundMe {
     using PriceConverter for uint256;
 
     // State variables
-    uint256 public constant MINIMUM_USD = 50 * 10**18;
+    uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
     address private immutable i_owner;
     address[] private s_funders;
     mapping(address => uint256) private s_addressToAmountFunded;
     AggregatorV3Interface private s_priceFeed;
-
+    //AggregatorV3Interface public priceFeed
     // Events (we have none!)
 
     // Modifiers
@@ -35,7 +35,11 @@ contract FundMe {
 
     // Functions Order:
     //// constructor
-    //// receive
+    //constructor(address pricefeedAddress) {
+    //owner = msg.sender();
+    //priceFeed = AggregatorV3Interface(priceFeedAddress) //AggregatorV3Interface object when passed in an address
+    //}                                                       //generates a contract. The pricefeed variable is used to interact with
+    //// receive                                              //the contract
     //// fallback
     //// external
     //// public
@@ -96,11 +100,9 @@ contract FundMe {
      *  @param fundingAddress the address of the funder
      *  @return the amount funded
      */
-    function getAddressToAmountFunded(address fundingAddress)
-        public
-        view
-        returns (uint256)
-    {
+    function getAddressToAmountFunded(
+        address fundingAddress
+    ) public view returns (uint256) {
         return s_addressToAmountFunded[fundingAddress];
     }
 
